@@ -88,6 +88,8 @@ func main() {
 	router.HandleFunc("/", welcome)
 	router.HandleFunc("/api/classify-number", handleNumber)
 
+	loggedRouter := helper.LoggingMiddleware(router)
+
 	log.Println("Listening and Serving on Port", Addr)
-	http.ListenAndServe(Addr, router)
+	http.ListenAndServe(Addr, loggedRouter)
 }
