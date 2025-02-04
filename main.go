@@ -88,6 +88,7 @@ func main() {
 	router.HandleFunc("/", welcome)
 	router.HandleFunc("/api/classify-number", handleNumber)
 
+	// Adding logging middleware
 	loggedRouter := helper.LoggingMiddleware(router)
 
 	log.Println("Listening and Serving on Port", Addr)
